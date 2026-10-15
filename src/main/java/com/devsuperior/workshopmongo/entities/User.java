@@ -7,6 +7,7 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 @Document(collection = "user")
 public class User {
@@ -14,10 +15,7 @@ public class User {
 	@Id
 	private String id;
 	private String name;
-	private String email;
-	
-	@DBRef(lazy = true)
-	private List<Post> posts = new ArrayList<>();
+	private String email;	
 	
 	public User() {
 	}
@@ -53,9 +51,7 @@ public class User {
 		this.email = email;
 	}
 	
-	public List<Post> getPosts() {
-		return posts;
-	}
+
 
 	@Override
 	public int hashCode() {
